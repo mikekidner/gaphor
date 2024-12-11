@@ -114,3 +114,7 @@ also requires including Service as a base class. In the HelloWorldPlugin example
 
 A more complete description of this approach can be found in the [Service Oriented Architecture documentation
 page](service_oriented.md).
+
+## Available Plugins
+
+The [gaphor_tools plugin](https://bitbucket.org/resonatesystems/gaphor_tools/src/main/) focusses on import/export of model data. Currently implemented is the import/export of data to Excel and Confluence. It's currently at the proof-of-concept stage of development, but does allow a requirements table to be exported, then edited and imported bringing in all the changes to the model, similarly for element notes.
