@@ -601,7 +601,11 @@ def upgrade_simple_properties_to_value_specifications(
                     type = modeling_language.lookup_element("LiteralInteger", elem.ns)
                     if type is not None and isinstance(value, str):
                         lowerValue = element_factory.create(type)
-                        lowerValue.value = int(value)
+                        try:
+                            # Overwrite any string value that is not '*'
+                            lowerValue.value = int(value)
+                        except ValueError:
+                            lowerValue.value = "*"
                         lowerValue.name = value
                         elem.values["lowerValue"] = lowerValue
                         homeless_literals[lowerValue.id] = (elem.id, name)
