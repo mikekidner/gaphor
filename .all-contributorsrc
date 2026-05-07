@@ -1761,6 +1761,24 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "mhoffman",
+      "name": "Max Hoffmann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/139379?v=4",
+      "profile": "https://mhoffman.github.io",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "Hasanhasan323",
+      "name": "Hasanhasan323",
+      "avatar_url": "https://avatars.githubusercontent.com/u/191950820?v=4",
+      "profile": "https://github.com/Hasanhasan323",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

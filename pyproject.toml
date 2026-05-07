@@ -1,6 +1,6 @@
 [project]
 name = "gaphor"
-version = "3.3.1"
+version = "3.3.2"
 description = "Gaphor is the simple modeling tool written in Python."
 authors = [
     { name = "Arjan Molenaar", email = "gaphor@gmail.com" },
@@ -121,7 +121,7 @@ install-schemas = "gaphor.ui.installschemas:install_schemas_parser"
 [tool.poetry]
 requires-poetry = ">=2.0"
 include = [
-    { path = "gaphor/locale/*/LC_MESSAGES/*" },
+    { path = "gaphor/locale/*/LC_MESSAGES/*", format = ["sdist", "wheel"] },
     { path = "data/org.gaphor.Gaphor*", format = "sdist" },
 ]
 exclude = ["**/tests", "gaphor/conftest.py" ]
@@ -165,7 +165,7 @@ furo = ">=2022,<2026"
 optional=true
 
 [tool.poetry.group.packaging.dependencies]
-pyinstaller = ">=6.13.0"
+pyinstaller = ">=6.20.0"
 pyinstaller-versionfile = "^3.0.1"
 semver = ">=2.13,<4.0"
 dmgbuild = {version = "^1.6.7", markers = "sys_platform == 'darwin'" }
@@ -216,6 +216,7 @@ gettext-pot = { "shell" = "pybabel extract -o po/gaphor.pot -F po/babel.ini -k i
 gettext-po = { "script" = "scripts.build_babel:update_po_files" }
 gettext-mo-all = { "script" = "scripts.build_babel:compile_mo_all" }
 gettext-mo-release = { "script" = "scripts.build_babel:compile_mo_release" }
+release-mature-locales-update = { "script" = "scripts.build_babel:update_release_mature_locales_file" }
 gettext-docs-pot = { "cwd" = "docs", "shell" = "sphinx-build -b gettext . locale" }
 gettext-docs-po = { "cwd" = "docs", "shell" = "sphinx-intl update -p locale" }
 translations = [ "gettext-pot", "gettext-po", "gettext-mo-all", "gettext-docs-pot", "gettext-docs-po" ]
