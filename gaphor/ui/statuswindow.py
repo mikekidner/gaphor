@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from gi.repository import Adw, GLib, Gtk, Pango
+from gi.repository import Adw, Gtk, Pango
 
 from gaphor.asyncio import sleep
 
@@ -31,7 +31,7 @@ class StatusWindow:
         self.progress_bar.set_size_request(400, -1)
         vbox.append(self.progress_bar)
 
-        self.window = Adw.Dialog.new()
+        self.window: Adw.Dialog | None = Adw.Dialog.new()
         self.window.set_child(vbox)
         self.window.set_title(title)
         self.window.add_css_class("status-window")
@@ -46,11 +46,5 @@ class StatusWindow:
     def done(self):
         """Close the status window."""
         if self.window:
-            if GLib.main_depth() > 0:
-                # If we close the status window to quick it will stay around
-                # See https://gitlab.gnome.org/GNOME/libadwaita/-/issues/970
-                window = self.window
-                GLib.idle_add(window.close, priority=GLib.PRIORITY_LOW)
-            else:
-                self.window.close()
+            self.window.close()
             self.window = None
