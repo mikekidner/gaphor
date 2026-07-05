@@ -1338,7 +1338,8 @@
       "profile": "https://github.com/Petalzu",
       "contributions": [
         "doc",
-        "translation"
+        "translation",
+        "bug"
       ]
     },
     {
@@ -1778,6 +1779,51 @@
       "profile": "https://github.com/Hasanhasan323",
       "contributions": [
         "bug"
+      ]
+    },
+    {
+      "login": "MesbahAyoubRayane",
+      "name": "Ayoub Rayane MESBAH",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92739091?v=4",
+      "profile": "https://github.com/MesbahAyoubRayane",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "fweber3",
+      "name": "fweber3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/148137809?v=4",
+      "profile": "https://github.com/fweber3",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "jivaccarezza",
+      "name": "jivaccarezza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161362682?v=4",
+      "profile": "https://github.com/jivaccarezza",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "zoeyAhmed",
+      "name": "Zelda Ahmed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/239873844?v=4",
+      "profile": "http://zoeythewitch.page",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "jashangills",
+      "name": "Jashan Kaur- Resonate Systems",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117167447?v=4",
+      "profile": "https://github.com/jashangills",
+      "contributions": [
+        "doc"
       ]
     }
   ],

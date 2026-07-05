@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+      uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
       with:
         egress-policy: block
         allowed-endpoints: >
@@ -37,15 +37,15 @@ jobs:
           pypi.org:443
           gitlab.gnome.org:443
     - name: Checkout repository
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       with:
         persist-credentials: false
     - name: Set up Python
-      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
       with:
         python-version: ${{ env.python_version }}
     - name: Use Python Dependency Cache
-      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-24.04
@@ -54,15 +54,18 @@ jobs:
         sudo apt-get update -qq && sudo apt-get install -qq --no-install-recommends
         libgirepository-2.0-dev libcairo2-dev
     - name: Install Poetry
-      run: python${python_version} -m pip install --constraint=.github/github-requirements.txt poetry
+      run: python${python_version} -m pip install --constraint=.github/github-requirements.txt poetry poetry-plugin-export
     - name: Configure Poetry
       run: poetry config virtualenvs.in-project true
+    - name: Export runtime requirements
+      run: poetry export --format=requirements.txt --output=requirements.txt
     - name: Install Python Dependencies
       run: |
-        poetry install --no-interaction
+        python${python_version} -m pip install -r requirements.txt --no-deps
+        python${python_version} -m pip install --no-deps .
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@95e58e9a2cdfd71adc6e0353d5c52f41a045d225 # v4.35.2
+      uses: github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
       with:
         languages: actions,python
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@95e58e9a2cdfd71adc6e0353d5c52f41a045d225 # v4.35.2
+      uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
